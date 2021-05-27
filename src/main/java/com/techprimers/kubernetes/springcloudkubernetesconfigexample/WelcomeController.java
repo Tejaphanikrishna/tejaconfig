@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeController {
 
-    @Value("${message:Welcome to Congigmap}")
+    @Value("${message:Welcome to Configmap}")
     private String message;
 
     @GetMapping
