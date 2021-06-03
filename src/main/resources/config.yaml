@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: config-example
 data:
-  application.properties: |-
+ application.properties: |
     welcome.message=Hello Youtube from app.properties
     message=Hi from app.properties

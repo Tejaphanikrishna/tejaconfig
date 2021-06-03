@@ -15,6 +15,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: config-example
+  
 spec:
   selector:
     matchLabels:
@@ -27,7 +28,18 @@ spec:
     spec:
       containers:
       - name: config-example
-        image: config-example
-        imagePullPolicy: Never
+        image: image-registry.openshift-image-registry.svc:5000/tejathunder-dev/configmapdemoexample
         ports:
         - containerPort: 8080
+        volumeMounts:
+            - name: config-demo
+              mountPath: /
+              readOnly: true
+      volumes:
+        - name: config-demo
+          configMap:
+            name: config-example
+
+           
+
+        

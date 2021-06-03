@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WelcomeController {
 
-    @Value("${message:Welcome to Configmap}")
-    private String message;
+	@Value("${message}")
+	private String message;
+	@Value("${greeter.message}")
+	private String message1;
 
-    @GetMapping
-    public String welcome() {
-        System.out.println(message);
-        return message;
-    }
+	@GetMapping("/")
+	public String welcome() {
+		String prefix = System.getenv().getOrDefault("USERNAME", "Unknown");
+		System.out.println(message);
+		System.out.println(message1);
+		return "Hi " + prefix;
+	}
 }
